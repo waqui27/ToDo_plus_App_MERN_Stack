@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react"
 import axios from "axios";
 import {useCookies} from "react-cookie"
 
+const BASE_URL = "https://todoplusappmernstack-production.up.railway.app"
+
 const Todo = () => {
     const [ cookies, setCookie] = useCookies()
     const [todos, setTodos] = useState()
@@ -16,7 +18,7 @@ const Todo = () => {
 
     const handleCreateTodo = async () => {
         const title = prompt("Write what to do")
-        const res = await axios.post("/todo/createTodo", {
+        const res = await axios.post(`${BASE_URL}/todo/createTodo`, {
             title: title,
             headers
         })
@@ -32,7 +34,7 @@ const Todo = () => {
 
 
             if(todoTitle) {
-                const resp = await axios.put(`/todo/editTitleTodo/${todo._id}`, {
+                const resp = await axios.put(`${BASE_URL}/todo/editTitleTodo/${todo._id}`, {
                     title: todoTitle
                 });
                 if (resp.data.success) {
@@ -49,7 +51,7 @@ const Todo = () => {
     // Delete Todo
     const handleTodoDelete = async (todo, index) => {
         try {
-            const resp = await axios.delete(`/todo/deleteTodo/${todo._id}`)
+            const resp = await axios.delete(`${BASE_URL}/todo/deleteTodo/${todo._id}`)
 //            console.log(resp);
             if (resp.data.success) {
                 document.getElementById(`todo-${index}`).style.border = ``;
@@ -81,7 +83,7 @@ const Todo = () => {
         const text  =  prompt("Write your Task!")
         let res
         if(text) {
-            res = await axios.post(`/todo/createTaskTodo/${todo._id}`, {
+            res = await axios.post(`${BASE_URL}/todo/createTaskTodo/${todo._id}`, {
                 text: text
             })
         }
@@ -97,7 +99,7 @@ const Todo = () => {
 
 
             if(taskTitle) {
-                const resp = await axios.put(`/todo/editTaskTodo/${todo._id}`, {
+                const resp = await axios.put(`${BASE_URL}/todo/editTaskTodo/${todo._id}`, {
                     editText: taskTitle,
                     index: index
                 });
@@ -117,7 +119,7 @@ const Todo = () => {
         try {
             const taskId = tasks._id
             const todoId = atodo._id
-            const res = await axios.put("/todo/deleteTaskTodo/", {
+            const res = await axios.put(`${BASE_URL}/todo/deleteTaskTodo/`, {
                 taskId: taskId,
                 todoId: todoId
             })
@@ -138,7 +140,7 @@ const Todo = () => {
 //        console.log(status)
 //        console.log(checkbox)
 
-        const res = await axios.post(`/todo/checkUncheckTaskTodo/${todo._id}`, {
+        const res = await axios.post(`${BASE_URL}/todo/checkUncheckTaskTodo/${todo._id}`, {
             index: index,
             status: status
         })
@@ -151,7 +153,7 @@ const Todo = () => {
     }
 
     const fetchTodos = async () => {
-        const res = await axios.get("/todo/getTodos", {
+        const res = await axios.get(`${BASE_URL}/todo/getTodos`, {
             headers
         });
         setTodos(res.data.allTodos);
@@ -162,7 +164,7 @@ const Todo = () => {
     };
 
     const fetchTodosWhenDeleted = async () => {
-        const res = await axios.get("/todo/getTodos", {
+        const res = await axios.get(`${BASE_URL}/todo/getTodos`, {
             headers
         });
         setAtodo(null)

@@ -4,6 +4,8 @@ import {useCookies} from "react-cookie";
 import { Link, useNavigate } from "react-router-dom";
 import Todo from "./todoSection/Todo";
 
+const BASE_URL = "https://todoplusappmernstack-production.up.railway.app"
+
 
 const Dashboard = () => {
 
@@ -19,7 +21,7 @@ const Dashboard = () => {
     }
 
     const getUser = async () => {
-        const res = await axios.get("/profile", {
+        const res = await axios.get(`${BASE_URL}/profile`, {
             headers
         })
 //         console.log(res.data)
@@ -33,7 +35,7 @@ const Dashboard = () => {
 
     const handleSignout = async () => {
             try {
-            const res =  await axios.post("/signout")
+                const res =  await axios.post(`${BASE_URL}/signout`)
 
             if(res.data.success) {
                 navigate("/")

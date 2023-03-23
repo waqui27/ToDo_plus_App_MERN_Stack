@@ -5,6 +5,8 @@ import { useCookies } from "react-cookie"
 
 import { Link, useNavigate } from "react-router-dom";
 
+const BASE_URL = "https://todoplusappmernstack-production.up.railway.app"
+
 
 
 const LoginUser = () => {
@@ -20,7 +22,7 @@ const LoginUser = () => {
             password: userPassword
         };
 
-        const res = await axios.post('/login', data)
+        const res = await axios.post(`${BASE_URL}/login`, data)
 
         if(res.data.success){
 
