@@ -13,8 +13,14 @@ app.use(express.urlencoded({
 }));
 
 const corsOptions = {
-    origin: true,
-    credentials: true
+    origin: [
+        'https://todo-plus.vercel.app',
+        'http://localhost:3000'
+    ],
+    allowedHeaders: ['Content-Type', 'Authorization', 'x-csrf-token'],
+    credentials: true,
+    maxAge: 600,
+    exposedHeaders: ['*', 'Authorization', ]
 };
 
 app.use(cors(corsOptions));

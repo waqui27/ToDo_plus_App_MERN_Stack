@@ -2,7 +2,7 @@ require("dotenv").config();
 const jwt = require("jsonwebtoken")
 
 const auth = (req, res, next) => {
-    console.log(req.cookies);
+    //    console.log(req.cookies);
     // const token = req.cookies.token   OBJECT destructuring
     const {token} = req.cookies // || req.body req.header
 

@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs")
 //import model - User
 const User = require("../model/User")
 
-exports.registerController = async (req, res) => {
+exports.registerController =    async (req, res) => {
     try {
         // collect all information
         const {firstname, lastname, email, password} = req.body
@@ -89,7 +89,9 @@ exports.loginController = async (req, res) => {
 
             const options = {
                 expiresIn: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
-                httpOnly: true
+                httpOnly: true,
+                secure: true,
+                sameSite: 'none'
             }
             return res.status(200).cookie("token", token, options).json({
                 success: true,
