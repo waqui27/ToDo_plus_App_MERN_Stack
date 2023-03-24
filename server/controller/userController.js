@@ -43,19 +43,35 @@ exports.registerController =    async (req, res) => {
        })
 
        // create a token and send it to user
-       const token = jwt.sign({
-        id: user._id, email
-       }, Process.env.TOKEN_SECRET, {expiresIn: '2h'})
+//       const token = jwt.sign({
+//        id: user._id, email
+//       }, Process.env.TOKEN_SECRET, {expiresIn: '2h'})
+
+        const token = jwt.sign({id: user._id, email}, process.env.TOKEN_SECRET, {expiresIn: '2h'})
 
        user.token = token
        //don't want to send the password
        user.password = undefined
 
-       res.status(201).json({
-        success: true,
-        user,
-        token
-    })
+        const options = {
+           expiresIn: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
+            httpOnly: true,
+            sameSite: 'none',
+            secure: true,
+            path: '/',
+            domain: 'todo-plus.vercel.app'
+       }
+        return res.status(200).cookie("token", token, options).json({
+            success: true,
+            token,
+            user
+        })
+
+//       res.status(201).json({
+//        success: true,
+//        user,
+//        token
+//    })
 
 
     } catch (error) {
@@ -89,9 +105,11 @@ exports.loginController = async (req, res) => {
 
             const options = {
                 expiresIn: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
-                httpOnly: false,
-//                secure: true,
-                sameSite: 'none'
+                httpOnly: true,
+                sameSite: 'none',
+                secure: true,
+                path: '/',
+                domain: 'todo-plus.vercel.app'
             }
             return res.status(200).cookie("token", token, options).json({
                 success: true,
