@@ -12,7 +12,12 @@ app.use(express.urlencoded({
     extended: true,
 }));
 
-app.use(cors())
+const corsOptions = {
+    origin: ['https://todo-plus.vercel.app/', 'http://localhost:3000'],
+    credentials: true
+};
+
+app.use(cors(corsOptions));
 
 app.use(cookieParser())
 
