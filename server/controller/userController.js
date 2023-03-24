@@ -89,8 +89,8 @@ exports.loginController = async (req, res) => {
 
             const options = {
                 expiresIn: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
-                httpOnly: true,
-                secure: true,
+                httpOnly: false,
+//                secure: true,
                 sameSite: 'none'
             }
             return res.status(200).cookie("token", token, options).json({
