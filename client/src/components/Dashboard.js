@@ -12,10 +12,11 @@ const Dashboard = () => {
 
     const getUser = async () => {
         const res = await axios.get(`${BASE_URL}/profile`, {
-            withCredentials: true
+            withCredentials: true, credentials: 'include'
         })
 //         console.log(res.data)
         setUser(res.data.user)
+        
     }
 
     useEffect(()=>{
