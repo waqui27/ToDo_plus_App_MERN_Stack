@@ -28,6 +28,7 @@ const Todo = () => {
                     title: todoTitle
                 });
                 if (resp.data.success) {
+                    setAtodo(resp.data?.aTodo)
                     fetchTodos()
                 }
             }
