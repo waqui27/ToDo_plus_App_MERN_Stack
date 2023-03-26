@@ -8,7 +8,7 @@ const BASE_URL = "https://todoplusappmernstack-production.up.railway.app"
 
 
 const LoginUser = () => {
-    const [cookies, setCookie] = useCookies(['token']);
+    const [cookies, setCookie] = useCookies();
     const navigate = useNavigate();
     const [userEmail, setUserEmail] = useState();
     const [userPassword, setUserPassword] = useState();
@@ -24,8 +24,9 @@ const LoginUser = () => {
         const res = await axios.post(`${BASE_URL}/login`, data)
 
         if(res.data.success){
-            setCookie("token", res.data.token, {sameSite: 'none'})
+            setCookie('token', res.data.token)
             console.log(res.data)
+            console.log(cookies)
             navigate('/dashboard')
         }
     }
