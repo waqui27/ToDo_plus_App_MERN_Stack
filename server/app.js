@@ -15,7 +15,7 @@ app.use(express.urlencoded({
 }));
 
 const corsOptions = {
-    origin: true,
+    origin: 'https://todo-plus.vercel.app',
     credentials: true
 }
 
