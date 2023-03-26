@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import {useCookies} from "react-cookie";
 import { Link, useNavigate } from "react-router-dom";
 import Todo from "./todoSection/Todo";
 
@@ -8,22 +7,11 @@ const BASE_URL = "https://todoplusappmernstack-production.up.railway.app"
 
 
 const Dashboard = () => {
-
-
-    const [cookies] = useCookies(['token']);
     const [user, setUser] = useState({});
     const navigate = useNavigate();
 
-
-    const headers = {
-        'Content-Type': 'application/json',
-        'token': cookies.token
-    }
-
     const getUser = async () => {
-        const res = await axios.get(`${BASE_URL}/profile`, {
-            headers
-        })
+        const res = await axios.get(`${BASE_URL}/profile`)
 //         console.log(res.data)
         setUser(res.data.user)
     }

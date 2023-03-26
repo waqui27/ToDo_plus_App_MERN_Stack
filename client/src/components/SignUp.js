@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useCookies } from "react-cookie";
 
 const BASE_URL = "https://todoplusappmernstack-production.up.railway.app"
 
@@ -13,8 +12,6 @@ const SignUpUser = () =>{
     const [userLastname, setUserLastname] = useState()
     const [userEmail, setUserEmail] = useState()
     const [userPassword, setUserPassword] = useState()
-
-    const [cookies, setCookie] = useCookies()
 
     const submitUser = async () => {
 
@@ -28,11 +25,8 @@ const SignUpUser = () =>{
       const res = await axios.post(`${BASE_URL}/register`, data)
 
         if(res.data.success){
-
-            setCookie('token', res.data.token)
             navigate('/dashboard')
-            console.log(res.data)
-
+            // console.log(res.data)
         }
 
     }

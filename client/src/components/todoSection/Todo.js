@@ -1,26 +1,16 @@
 import React, {useState, useEffect} from "react"
 import axios from "axios";
-import {useCookies} from "react-cookie"
 
 const BASE_URL = "https://todoplusappmernstack-production.up.railway.app"
 
 const Todo = () => {
-    const [ cookies, setCookie] = useCookies()
     const [todos, setTodos] = useState()
 
-    const headers = {
-        'Content-Type': 'application/json',
-        'token': cookies.token
-    }
-
-
     // Create Todo
-
     const handleCreateTodo = async () => {
         const title = prompt("Write what to do")
         const res = await axios.post(`${BASE_URL}/todo/createTodo`, {
             title: title,
-            headers
         })
         if(res.data.success) {
             fetchTodos()
@@ -153,9 +143,7 @@ const Todo = () => {
     }
 
     const fetchTodos = async () => {
-        const res = await axios.get(`${BASE_URL}/todo/getTodos`, {
-            headers
-        });
+        const res = await axios.get(`${BASE_URL}/todo/getTodos`);
         setTodos(res.data.allTodos);
         if (typeof atodoIndex !== "undefined") {
                 setTasks(res.data.allTodos[atodoIndex]?.tasks);
@@ -164,20 +152,17 @@ const Todo = () => {
     };
 
     const fetchTodosWhenDeleted = async () => {
-        const res = await axios.get(`${BASE_URL}/todo/getTodos`, {
-            headers
-        });
+        const res = await axios.get(`${BASE_URL}/todo/getTodos`);
         setAtodo(null)
         setTasks(null)
         setTodos(res.data.allTodos);
-////        if (res.data.allTodos[atodoIndex]?.tasks) {
-////            setTasks(res.data.allTodos[atodoIndex].tasks);
-////        }
+//        if (res.data.allTodos[atodoIndex]?.tasks) {
+//            setTasks(res.data.allTodos[atodoIndex].tasks);
+//        }
 //        if((res.data.allTodos?.length === 0) || (res.data.allTodos?.length === atodo.length -1)) {
 //            setTasks(res.data.allTodos[atodoIndex - 1]?.tasks);
 //        }
-//        setTasks(res.data.allTodos[atodoIndex]?.tasks);
-
+//        setTasks(res.data.allTodos[atodoIndex]?.tasks)
 
     };
 
