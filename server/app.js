@@ -6,6 +6,8 @@ const userRoute = require("./route/userRoute")
 var cookieParser = require('cookie-parser')
 const app = express();
 
+connectToDB()
+
 //Middleware
 app.use(express.json());
 app.use(express.urlencoded({
@@ -17,11 +19,11 @@ const corsOptions = {
     credentials: true
 }
 
+app.set("trust proxy", 1);
+
 app.use(cors(corsOptions));
 
 app.use(cookieParser())
-
-connectToDB()
 
 app.use("/", todoRoute, userRoute)
 
