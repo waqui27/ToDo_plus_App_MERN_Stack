@@ -11,7 +11,9 @@ const Dashboard = () => {
     const navigate = useNavigate();
 
     const getUser = async () => {
-        const res = await axios.get(`${BASE_URL}/profile`)
+        const res = await axios.get(`${BASE_URL}/profile`, {
+            withCredentials: true
+        })
 //         console.log(res.data)
         setUser(res.data.user)
     }
