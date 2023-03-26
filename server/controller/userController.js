@@ -57,8 +57,8 @@ exports.registerController =    async (req, res) => {
            expiresIn: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
             httpOnly: true,
             sameSite: 'none',
-            secure: true,
-            domain: 'todo-plus.vercel.app'
+            // secure: true,
+            // domain: 'todo-plus.vercel.app'
        }
         return res.status(200).cookie("token", token, options).json({
             success: true,
@@ -106,8 +106,8 @@ exports.loginController = async (req, res) => {
                 expiresIn: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
                 httpOnly: true,
                 sameSite: 'none',
-                secure: true,
-                domain: 'todo-plus.vercel.app'
+                // secure: true,
+                // domain: 'todo-plus.vercel.app'
             }
             return res.status(200).cookie("token", token, options).json({
                 success: true,
