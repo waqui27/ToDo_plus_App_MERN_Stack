@@ -24,7 +24,7 @@ const LoginUser = () => {
         const res = await axios.post(`${BASE_URL}/login`, data)
 
         if(res.data.success){
-            setCookie(res.data.token)
+            setCookie("token", res.data.token, {sameSite: 'none'})
             console.log(res.data)
             navigate('/dashboard')
         }
