@@ -1,6 +1,5 @@
 import React ,{useState} from "react";
 import axios from "axios"
-import {useCookies} from "react-cookie";
 
 import { Link, useNavigate } from "react-router-dom";
 
@@ -24,9 +23,7 @@ const LoginUser = () => {
         const res = await axios.post(`${BASE_URL}/login`, data)
 
         if(res.data.success){
-            setCookie('token', res.data.token)
             console.log(res.data)
-            console.log(cookies)
             navigate('/dashboard')
         }
     }
