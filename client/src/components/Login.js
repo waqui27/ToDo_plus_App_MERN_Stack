@@ -7,7 +7,6 @@ const BASE_URL = "https://todoplusappmernstack-production.up.railway.app"
 
 
 const LoginUser = () => {
-    const [cookies, setCookie] = useCookies();
     const navigate = useNavigate();
     const [userEmail, setUserEmail] = useState();
     const [userPassword, setUserPassword] = useState();

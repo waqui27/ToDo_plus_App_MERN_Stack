@@ -11,12 +11,15 @@ const Dashboard = () => {
     const navigate = useNavigate();
 
     const getUser = async () => {
-        const res = await axios.get(`${BASE_URL}/profile`, {
-            withCredentials: true, credentials: 'include'
-        })
-//         console.log(res.data)
-        setUser(res.data.user)
-        
+        try {
+            const res = await axios.get(`${BASE_URL}/profile`, {
+                withCredentials: true, credentials: 'include'
+            })
+            console.log(res)
+            setUser(res.data.user)
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     useEffect(()=>{
