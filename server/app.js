@@ -14,12 +14,12 @@ app.use(express.urlencoded({
     extended: true,
 }));
 
-// const corsOptions = {
-//     origin: 'https://todo-plus.vercel.app',
-//     credentials: true
-// }
+const corsOptions = {
+    origin: 'https://to-do-plus-app-mern-stack.vercel.app',
+    credentials: true
+}
 
-app.use(cors({ origin: true, credentials: true }));
+app.use(cors(corsOptions));
 
 app.use(cookieParser())
 
