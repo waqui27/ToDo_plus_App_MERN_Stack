@@ -19,7 +19,7 @@ const LoginUser = () => {
             password: userPassword
         };
 
-        const res = await axios.post(`${BASE_URL}/login`, data)
+        const res = await axios.post(`${BASE_URL}/login`, data, {headers: {"Content-Type": "application/json"}  ,withCredentials: true,})
 
         if(res.data.success){
             console.log(res.data)
