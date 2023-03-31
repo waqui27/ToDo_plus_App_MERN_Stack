@@ -34,6 +34,7 @@ const Dashboard = () => {
                 })
 
             if(res.data.success) {
+                console.log(res.data)
                 navigate("/")
             }
 
