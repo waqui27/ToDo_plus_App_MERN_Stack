@@ -29,7 +29,9 @@ const Dashboard = () => {
 
     const handleSignout = async () => {
             try {
-                const res =  await axios.get(`${BASE_URL}/signout`, {headers: {"Content-Type": "application/json"}, withCredentials: true,})
+                const res =  await axios.get(`${BASE_URL}/signout`, {
+                    withCredentials: true, credentials: 'include'
+                })
 
             if(res.data.success) {
                 console.log(res.data)
