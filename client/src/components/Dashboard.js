@@ -29,7 +29,9 @@ const Dashboard = () => {
 
     const handleSignout = async () => {
             try {
-                const res =  await axios.post(`${BASE_URL}/signout`)
+                const res =  await axios.post(`${BASE_URL}/signout`, null, {
+                    withCredentials: true
+                })
 
             if(res.data.success) {
                 navigate("/")
