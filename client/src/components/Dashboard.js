@@ -29,12 +29,11 @@ const Dashboard = () => {
 
     const handleSignout = async () => {
             try {
-                const res =  await axios.post(`${BASE_URL}/signout`, {headers: {"Content-Type": "application/json"}, withCredentials: true, credentials: 'include'})
-                console.log(res)
-//            if(res.data.success) {
-//                console.log(res.data)
-//                navigate("/")
-//            }
+                const res =  await axios.get(`${BASE_URL}/signout`, {withCredentials: true})
+            if(res.data.success) {
+                console.log(res.data)
+                navigate("/")
+            }
 
         } catch (error) {
             console.log(error)
