@@ -11,6 +11,8 @@ const Todo = () => {
         const title = prompt("Write what to do")
         const res = await axios.post(`${BASE_URL}/todo/createTodo`, {
             title: title,
+        }, {
+            withCredentials: true, credentials: 'include'
         })
         if(res.data.success) {
             fetchTodos()
@@ -144,7 +146,9 @@ const Todo = () => {
     }
 
     const fetchTodos = async () => {
-        const res = await axios.get(`${BASE_URL}/todo/getTodos`);
+        const res = await axios.get(`${BASE_URL}/todo/getTodos`, {
+            withCredentials: true, credentials: 'include'
+        });
         setTodos(res.data.allTodos);
         if (typeof atodoIndex !== "undefined") {
                 setTasks(res.data.allTodos[atodoIndex]?.tasks);
@@ -153,7 +157,9 @@ const Todo = () => {
     };
 
     const fetchTodosWhenDeleted = async () => {
-        const res = await axios.get(`${BASE_URL}/todo/getTodos`);
+        const res = await axios.get(`${BASE_URL}/todo/getTodos`, {
+            withCredentials: true, credentials: 'include'
+        });
         setAtodo(null)
         setTasks(null)
         setTodos(res.data.allTodos);

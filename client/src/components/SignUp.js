@@ -22,7 +22,7 @@ const SignUpUser = () =>{
             password: userPassword
         }
 
-      const res = await axios.post(`${BASE_URL}/register`, data)
+      const res = await axios.post(`${BASE_URL}/register`, data, {headers: {"Content-Type": "application/json"}  ,withCredentials: true,})
 
         if(res.data.success){
             navigate('/dashboard')
