@@ -155,8 +155,7 @@ exports.profileController =  async (req, res) => {
 exports.signoutController = async (req, res) => {
     try {
 
-        const {token} = req.cookies
-        res.clearCookie(token)
+        res.clearCookie("token")
         res.status(200).json({
             success: true,
             message: "Logged Out Successfully"
