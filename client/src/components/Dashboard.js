@@ -29,7 +29,7 @@ const Dashboard = () => {
 
     const handleSignout = async () => {
             try {
-                const res =  await axios.post(`${BASE_URL}/signout`, null, {
+                const res =  await axios.get(`${BASE_URL}/signout`, {
                     withCredentials: true
                 })
 
