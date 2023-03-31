@@ -1,4 +1,3 @@
-require("dotenv").config();
 const express = require("express");
 const connectToDB = require("./config/db")
 const cors = require("cors")
@@ -16,7 +15,7 @@ app.use(express.urlencoded({
 }));
 
 const corsOptions = {
-    origin: [processs.env.FRONTEND_URL],
+    origin: 'https://todo-plus.vercel.app',
     credentials: true
 }
 
