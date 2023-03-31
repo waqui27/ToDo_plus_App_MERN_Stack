@@ -160,7 +160,7 @@ exports.signoutController = async (req, res) => {
 //            message: "Logged Out Successfully"
 //        })
         const options = {
-            expiresIn: new Date(Date.now() + 10000),
+            expiresIn: new Date(Date.now() + 1000),
             httpOnly: true,
             sameSite: 'none',
             secure: true,

@@ -29,9 +29,7 @@ const Dashboard = () => {
 
     const handleSignout = async () => {
             try {
-                const res =  await axios.post(`${BASE_URL}/signout`, {
-                    withCredentials: true, credentials: 'include'
-                })
+                const res =  await axios.post(`${BASE_URL}/signout`, null,  {headers: {"Content-Type": "application/json"}, withCredentials: true,})
 
             if(res.data.success) {
                 console.log(res.data)
