@@ -30,7 +30,11 @@ const Dashboard = () => {
     const handleSignout = async () => {
             try {
                 const res =  await axios.post(`${BASE_URL}/signout`, null, {
-                    withCredentials: true
+                    withCredentials: true,
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                    },
                 })
 
             if(res.data.success) {
