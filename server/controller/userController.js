@@ -155,6 +155,12 @@ exports.profileController =  async (req, res) => {
 exports.signoutController = async (req, res) => {
     try {
 
+        const options = {
+            httpOnly: true,
+            sameSite: 'none',
+            secure: true,
+        }
+        res.cookie("token", null, options);
         res.clearCookie("token")
         res.status(200).json({
             success: true,
