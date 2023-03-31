@@ -15,7 +15,7 @@ app.use(express.urlencoded({
 }));
 
 const corsOptions = {
-    origin: 'https://to-do-plus-app-mern-stack.vercel.app',
+    origin: [processs.env.FRONTEND_URL],
     credentials: true
 }
 
