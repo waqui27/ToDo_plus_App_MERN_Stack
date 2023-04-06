@@ -154,9 +154,16 @@ exports.profileController =  async (req, res) => {
 
 exports.signoutController = async (req, res) => {
     try {
-        res.status(201).clearCookie("token").json({
+
+        const options = {
+            expiresIn: new Date(Date.now()),
+            httpOnly: true,
+            sameSite: 'none',
+            secure: true
+        }
+        return res.status(200).cookie("token", "", options).json({
             success: true,
-            message: "signout Successfully"
+            message: "signout Successfully",
         })
 
     } catch (error) {

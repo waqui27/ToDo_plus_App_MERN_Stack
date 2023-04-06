@@ -32,7 +32,7 @@ const Dashboard = () => {
                 const res =  await axios.get(`${BASE_URL}/signout`, {withCredentials: true})
             if(res.data.success) {
                 console.log(res.data)
-                navigate("/")
+                getUser()
             }
 
         } catch (error) {
