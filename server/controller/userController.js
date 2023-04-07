@@ -97,13 +97,13 @@ exports.loginController = async (req, res) => {
         // } not working code says bad request
         //match the password
         if(user && (await bcrypt.compare(password, user.password))) {
-            const token = jwt.sign({id: user._id, email}, process.env.TOKEN_SECRET, {expiresIn: '2h'})
+            const token = jwt.sign({id: user._id, email}, process.env.TOKEN_SECRET, {expiresIn: '480h'})
 
             user.password = undefined
             user.token = token
 
             const options = {
-                expiresIn: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
+                expiresIn: new Date(Date.now() + 20 * 24 * 60 * 60 * 1000),
                 httpOnly: true,
                 sameSite: 'none',
                 secure: true
