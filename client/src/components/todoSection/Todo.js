@@ -207,10 +207,10 @@ return(
             {todos && todos.map((todo, index) => (
                     <div key={index} id={`todo-${index}`} onClick={() => changeBorder(index, 'black')} className="rounded shadow-xl drop-shadow-md max-w-lg border-t-2 border-gray-200 hover:scale-105 mx-4 my-2">
                         <div onClick={() => getTasksAtodoIndex(todo, index)} className="flex flex-row gap-8 p-2 justify-between cursor-pointer">
-                            <h1 className="break-all text-lg font-semibold text-black" >{todo.title}</h1>
+                            <h1 className="break-words text-[15px] lg:text-lg font-semibold text-black" >{todo.title}</h1>
                             <div className="flex items-center gap-2">
-                                <button className="rounded-md bg-yellow-600 px-3.5 py-1.5 text-base font-semibold leading-7 text-white hover:bg-yellow-500" onClick={() => handleTodoEdit(todo)}>Edit</button>
-                                <button className="rounded-md bg-gray-600 px-3.5 py-1.5 text-base font-semibold leading-7 text-white hover:bg-gray-500" onClick={() => {
+                                <button className="rounded-md bg-yellow-600 px-2 lg:px-2.5 lg:py-1.5 text-sm lg:text-base font-semibold leading-7 text-white hover:bg-yellow-500" onClick={() => handleTodoEdit(todo)}>Edit</button>
+                                <button className="rounded-md bg-gray-600 px-2 lg:px-2.5 lg:py-1.5 text-sm lg:text-base font-semibold leading-7 text-white hover:bg-gray-500" onClick={() => {
                                     if(window.confirm(`DELETE TODO : "${todo.title} from the database"`)) {
                                         handleTodoDelete(todo, index)
                                     }
@@ -226,18 +226,20 @@ return(
             <div className={"m-6 p-2 rounded-lg p-6 shadow-2xl drop-shadow-md border-t-2 border-gray-200"} >
             {atodo ? (
             <div>
-                <h1 className={"break-all text-lg font-semibold text-black max-w-md"}>{atodo.title}</h1>
+                <h1 className={"break-words text-lg font-semibold text-black max-w-md"}>{atodo.title}</h1>
                 <button className={"mt-4 md:mt-2 mb-4 rounded-md bg-indigo-600 px-3.5 py-1.5 text-base font-semibold leading-7 text-white hover:bg-indigo-500"} onClick={() => handleCreateTask(atodo)} >Add Task +</button>
             </div>) : (<div><button className={"mt-12 md:mt-2 mb-4 rounded-md bg-indigo-600 px-3.5 py-1.5 text-base font-semibold leading-7 text-white hover:bg-indigo-500"}  >Select or Add Todo First</button></div>)}
             {tasks && tasks.map((tasks, index) => (
                 <div key={index} className="flex flex-row gap-8 my-4 mx-2 max-w-lg justify-between">
                     <div className="flex items-center gap-2">
-                        <input className="h-5 w-5 accent-indigo-600" type="checkbox" id={`task-${index}`} name={`task-${index}`} checked= {tasks.status} onChange={(e) => handleTaskCheck(atodo, index, e.target)} />
-                        <p className={"break-all text-md font-semibold text-black"}>{tasks.task}</p>
+                        <div className="h-4 w-4 md:h-5 md:w-5">
+                            <input className="h-4 w-4 md:h-5 md:w-5 accent-indigo-600" type="checkbox" id={`task-${index}`} name={`task-${index}`} checked= {tasks.status} onChange={(e) => handleTaskCheck(atodo, index, e.target)} />
+                        </div>
+                        <p className={"break-words text-md font-semibold text-black"}>{tasks.task}</p>
                     </div>
                     <div className="flex items-center gap-2">
-                        <button className="rounded-md bg-yellow-600 px-2 py-.5 text-sm font-semibold leading-7 text-white hover:bg-yellow-500" onClick={() => handleTaskEdit(atodo, index)}>Edit</button>
-                        <button className="rounded-md bg-gray-600 px-2 py-.5 text-sm font-semibold leading-7 text-white hover:bg-gray-500" onClick={() => handleTaskDelete(tasks)}>Delete</button>
+                        <button className="rounded-md bg-yellow-600 px-1.5 text-xs font-semibold leading-7 text-white hover:bg-yellow-500" onClick={() => handleTaskEdit(atodo, index)}>Edit</button>
+                        <button className="rounded-md bg-gray-600 px-1.5 text-xs font-semibold leading-7 text-white hover:bg-gray-500" onClick={() => handleTaskDelete(tasks)}>Delete</button>
                     </div>
                 </div>
 
