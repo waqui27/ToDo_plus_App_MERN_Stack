@@ -206,7 +206,7 @@ return(
         <div>
             {todos && todos.map((todo, index) => (
                     <div key={index} id={`todo-${index}`} onClick={() => changeBorder(index, 'black')} className="rounded shadow-xl drop-shadow-md max-w-lg border-t-2 border-gray-200 hover:scale-105 mx-4 my-2">
-                        <div onClick={() => getTasksAtodoIndex(todo, index)} className="flex flex-row gap-8 p-2 justify-between cursor-pointer">
+                        <div onClick={() => getTasksAtodoIndex(todo, index)} className="flex flex-row gap-4 p-2 justify-between cursor-pointer">
                             <h1 className="break-words text-[15px] lg:text-lg font-semibold text-black" >{todo.title}</h1>
                             <div className="flex items-center gap-2">
                                 <button className="rounded-md bg-yellow-600 px-2 lg:px-2.5 lg:py-1.5 text-sm lg:text-base font-semibold leading-7 text-white hover:bg-yellow-500" onClick={() => handleTodoEdit(todo)}>Edit</button>
@@ -230,7 +230,7 @@ return(
                 <button className={"mt-4 md:mt-2 mb-4 rounded-md bg-indigo-600 px-3.5 py-1.5 text-base font-semibold leading-7 text-white hover:bg-indigo-500"} onClick={() => handleCreateTask(atodo)} >Add Task +</button>
             </div>) : (<div><button className={"mt-12 md:mt-2 mb-4 rounded-md bg-indigo-600 px-3.5 py-1.5 text-base font-semibold leading-7 text-white hover:bg-indigo-500"}  >Select or Add Todo First</button></div>)}
             {tasks && tasks.map((tasks, index) => (
-                <div key={index} className="flex flex-row gap-8 my-4 mx-2 max-w-lg justify-between">
+                <div key={index} className="flex flex-row gap-2 my-4 mx-2 max-w-lg justify-between">
                     <div className="flex items-center gap-2">
                         <div className="h-4 w-4 md:h-5 md:w-5">
                             <input className="h-4 w-4 md:h-5 md:w-5 accent-indigo-600" type="checkbox" id={`task-${index}`} name={`task-${index}`} checked= {tasks.status} onChange={(e) => handleTaskCheck(atodo, index, e.target)} />
