@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Todo from "./todoSection/Todo";
 
-const BASE_URL = "https://todoplusappmernstack-production.up.railway.app"
+const BASE_URL = "https://todoplus-fqi5.onrender.com"
 
 
 const Dashboard = () => {
