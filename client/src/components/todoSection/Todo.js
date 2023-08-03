@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react"
 import axios from "axios";
 
-const BASE_URL = "https://todoplusappmernstack-production.up.railway.app"
+const BASE_URL = "https://todoplus-fqi5.onrender.com"
 
 const Todo = () => {
     const [todos, setTodos] = useState()
